@@ -45,6 +45,7 @@ function Login(){
     
     const handleSubmit = (e) => {
         e.preventDefault(); //no reloading
+        console.log();
         setIsLoggedIn(true);
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
     };
