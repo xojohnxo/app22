@@ -3,7 +3,7 @@ import { useState, useEffect} from "react";
 import { user } from '../dummyData';
 
 
-function Login(){
+function Login(onLogin){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessages, setErrorMessages] = useState("");
@@ -48,6 +48,7 @@ function Login(){
         console.log();
         setIsLoggedIn(true);
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        onLogin();
     };
 
     const renderErrorMsg = (name) =>
