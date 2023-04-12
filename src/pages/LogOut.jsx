@@ -1,15 +1,20 @@
 import React from "react";
 
-function Logout({ onLogout }) {
+function Logout({ isLoggedIn ,onLogout }) {
+
   const handleLogout = () => {
-    localStorage.removeItem("currentUser"); // remove the user from local storage
-    onLogout(); // call the onLogout prop function to update the app state
+    localStorage.removeItem("currentUser"); 
+    onLogout();  
   };
 
   return (
-    <button onClick={handleLogout} className="logout_button">
-      Logout
-    </button>
+    <>
+      {isLoggedIn ? (
+        <div>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      ) : null}
+    </>
   );
 }
 
