@@ -1,20 +1,17 @@
 import React from "react";
 
-function Logout({ isLoggedIn ,onLogout }) {
+function Logout({onLogout }) {
 
   const handleLogout = () => {
-    localStorage.removeItem("currentUser"); 
+    localStorage.clear();
     onLogout();  
+    console.log();
   };
 
   return (
-    <>
-      {isLoggedIn ? (
-        <div>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : null}
-    </>
+    <div>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
   );
 }
 

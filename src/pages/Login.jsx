@@ -47,6 +47,7 @@ function Login({ onLogin }) {
     e.preventDefault(); //prevent page reload
     setCurrentUser(user.find((user) => user.username === username));
     setIsLoggedIn(true);
+    localStorage.setItem(username, password);
     onLogin();
   };
 
