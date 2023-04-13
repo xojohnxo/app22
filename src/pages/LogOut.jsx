@@ -4,8 +4,8 @@ function Logout({onLogout }) {
 
   const handleLogout = () => {
     localStorage.clear();
-    onLogout();  
-    console.log();
+    onLogout();
+    
   };
 
   return (
