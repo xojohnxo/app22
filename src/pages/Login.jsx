@@ -44,6 +44,7 @@ function Login({ onLogin }) {
   }, [currentUser, password]);
 
   const handleSubmit = (e) => {
+    console.log(onLogin);
     e.preventDefault(); //prevent page reload
     setCurrentUser(user.find((user) => user.username === username));
     setIsLoggedIn(true);
@@ -74,7 +75,7 @@ function Login({ onLogin }) {
         />
         {renderErrorMsg("password")}
       </div>
-      <input type="submit" value="Log In" className="login_button" />
+      <button type="submit">Login</button>
     </form>
   );
 }

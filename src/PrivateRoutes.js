@@ -1,10 +1,13 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
-function PrivateRoutes({children, ...rest}) {
-    let auth = {'token':false}
-    return (
-        auth.token ? <Outlet/> : <Navigate to ='/login'/>
-    )
+function PrivateRoutes({isLoggedin}) {
+   if (!isLoggedin) {
+    return <Navigate to="/" replace/>
+   }
+   else{
+    return <Navigate to="/login" replace/>
+    }
+   
 
 }
 export default PrivateRoutes;

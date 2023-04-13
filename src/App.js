@@ -17,9 +17,12 @@ import PrivateRoutes from './PrivateRoutes';
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const handleLogin = () => {
+  
+  const handleLogin = () => {
+      console.log("Logged in");
+      setIsLoggedIn(true);
+    }
 
-    setIsLoggedIn(true);
 
 
   return (
@@ -28,22 +31,20 @@ function App() {
       <div className="container">
         <Sidebar />
         <Routes>
-          <Route element={<PrivateRoutes/>}>
-            <Route path="/" element= {isLoggedIn ? <Navigate to="/home" /> : <Navigate to="/login" />} />
-            <Route path="/home" element= {<Home />} exact/>
-            <Route path="/users" element={<UserList />} />
-            <Route path="/user/:userId" element={<User />} />
-            <Route path="/newUser" element={<NewUser />} />
-            <Route path="/products" element={<ProductList />} />
-            <Route path="/product/:productId" element={<Product />} />
-            <Route path="/newproduct" element={<NewProduct />} />
-          </Route>
+    
+            <Route path="/" element= {isLoggedIn ? <Navigate to='/home'/> : <Navigate to='/login'/>} />
+            <Route path="/home" element= {<PrivateRoutes isLoggedin={isLoggedIn}> <Home/> </PrivateRoutes>}/>
+            <Route path="/users" element={<PrivateRoutes isLoggedin={isLoggedIn}> <UserList/> </PrivateRoutes>} />
+            <Route path="/user/:userId" element={<PrivateRoutes isLoggedin={isLoggedIn}> <User/> </PrivateRoutes>} />
+            <Route path="/newUser" element={<PrivateRoutes isLoggedin={isLoggedIn}> <NewUser/> </PrivateRoutes>} />
+            <Route path="/products" element={<PrivateRoutes isLoggedin={isLoggedIn}> <ProductList/> </PrivateRoutes>} />
+            <Route path="/product/:productId" element={<PrivateRoutes isLoggedin={isLoggedIn}> <Product/> </PrivateRoutes>} />
+            <Route path="/newproduct" element={<PrivateRoutes isLoggedin={isLoggedIn}> <NewProduct/> </PrivateRoutes>} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
         </Routes>
       </div>
       </Router>
   );
-}
 }
 
 export default App;
